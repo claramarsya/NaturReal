@@ -27,7 +27,7 @@ st.markdown(
 # Logo dan judul
 col1, col2 = st.columns([1, 15])
 with col1:
-    st.image("image/logo.png", width=300)
+    st.image("image/logo.png", use_container_width=True)
 with col2:
     st.markdown("<div class='custom-title'>NaturReal</div>", unsafe_allow_html=True)
 
@@ -50,43 +50,48 @@ st.markdown("<br>", unsafe_allow_html=True)
 uploaded_file = st.file_uploader("Upload gambar lukisan", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
-    # Gambar di tengah
-    col_left, col_center, col_right = st.columns([1, 1, 1])  # Tengah lebih lebar
-    with col_center:
-        img = Image.open(uploaded_file)
-        st.image(img, caption="Gambar yang diupload", use_container_width=True)
-
-        # Jarak
-        st.markdown("<br>", unsafe_allow_html=True)
-
-        # Tombol di tengah
-        col_left, col_center, col_right = st.columns([1, 2, 1])
+    try:
+        # Gambar di tengah
+        col_left, col_center, col_right = st.columns([1, 1, 1])  # Tengah lebih lebar
         with col_center:
-            predict = st.button("Lihat Hasil Prediksi")
+            img = Image.open(uploaded_file)
+            st.image(img, caption="Gambar yang diupload", use_container_width=True)
 
-    # Hasil prediksi
-    if predict:
-        with st.spinner("Memproses..."):
-                # Preprocessing
-                img = img.resize((224, 224))
-                img_array = image.img_to_array(img)
-                img_array = np.expand_dims(img_array, axis=0) / 255.0
+            # Jarak
+            st.markdown("<br>", unsafe_allow_html=True)
 
-                # Prediksi
-                prediction = model.predict(img_array)
-                prob = float(prediction[0])
+            # Tombol di tengah
+            col_left, col_center, col_right = st.columns([1, 2, 1])
+            with col_center:
+                predict = st.button("Lihat Hasil Prediksi", use_container_width=True)
 
-                # Penentuan label & confidence
-                if prob > 0.5:
-                    predicted_label = 1
-                    confidence = prob
-                else:
-                    predicted_label = 0
-                    confidence = 1 - prob
+        # Hasil prediksi
+        if predict:
+            with st.spinner("Memproses..."):
+                    # Preprocessing
+                    img = img.resize((224, 224))
+                    img_array = image.img_to_array(img)
+                    img_array = np.expand_dims(img_array, axis=0) / 255.0
 
-                predicted_class = class_names[predicted_label]
+                    # Prediksi
+                    prediction = model.predict(img_array)
+                    prob = float(prediction[0])
 
-                # Tampilkan hasil
-                st.markdown("<br>", unsafe_allow_html=True)
-                st.subheader("Hasil Prediksi:")
-                st.info(f"Lukisan ini diprediksi sebagai **{predicted_class}** dengan tingkat keyakinan sebesar **{confidence*100:.2f}%**")
+                    # Penentuan label & confidence
+                    if prob > 0.5:
+                        predicted_label = 1
+                        confidence = prob
+                    else:
+                        predicted_label = 0
+                        confidence = 1 - prob
+
+                    predicted_class = class_names[predicted_label]
+
+                    # Tampilkan hasil
+                    st.markdown("<br>", unsafe_allow_html=True)
+                    st.subheader("Hasil Prediksi:")
+                    st.info(f"Lukisan ini diprediksi sebagai **{predicted_class}** dengan tingkat keyakinan sebesar **{confidence*100:.2f}%**")
+
+    except Exception as e:
+        st.warning("⚠️ Gambar tidak dapat dibaca. Pastikan format file adalah .jpg, .jpeg, atau .png.")
+        st.error(f"Detail error: {e}")
