@@ -19,6 +19,12 @@ st.markdown(
             font-weight: semibold;
             padding-top: 5px;
         }
+        @media only screen and (max-width: 768px) {
+            .custom-title {
+                font-size: 24px !important;
+                text-align: center;
+            }
+        }
     </style>
     """,
     unsafe_allow_html=True
