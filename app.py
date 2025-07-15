@@ -38,7 +38,7 @@ st.markdown("---")
 st.image("image/banner.jpg", use_container_width=True)
 
 # Load model
-model = load_model('model/fine_tuned_model.keras')
+model = load_model('model/fine_tuned_model.h5')
 
 # Mapping label
 class_names = ['Naturalisme', 'Realisme']
