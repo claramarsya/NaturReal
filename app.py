@@ -8,17 +8,25 @@ from PIL import Image
 # Konfigurasi halaman
 st.set_page_config(page_title="NaturReal", layout="centered")
 
+# CSS custom font judul
+st.markdown(
+    """
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        .custom-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 35px;
+            font-weight: semibold;
+            padding-top: 4px;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Header: logo kecil dan judul
 st.markdown("<h2 style='text-align: center; font-family: Playfair Display;'>NaturReal</h2>", unsafe_allow_html=True)
 st.image("image/logo.png", width=100)  # Ukuran logo kecil, otomatis ke tengah
-
-
-# Logo dan judul
-col1, col2 = st.columns([1, 15])
-with col1:
-    st.image("image/logo.png", use_container_width=True)
-with col2:
-    st.markdown("<div class='custom-title'>NaturReal</div>", unsafe_allow_html=True)
 
 # Garis pemisah
 st.markdown("---")
