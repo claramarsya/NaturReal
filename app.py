@@ -19,11 +19,6 @@ st.markdown(
             font-weight: semibold;
             padding-top: 4px;
         }
-        @media screen and (max-width: 768px) {
-            .custom-title {
-                font-size: 28px;
-            }
-        }
     </style>
     """,
     unsafe_allow_html=True
@@ -32,7 +27,7 @@ st.markdown(
 # Logo dan judul
 col1, col2 = st.columns([1, 15])
 with col1:
-    st.image("image/logo.png", width=60)
+    st.image("image/logo.png", use_container_width=True)
 with col2:
     st.markdown("<div class='custom-title'>NaturReal</div>", unsafe_allow_html=True)
 
@@ -43,7 +38,7 @@ st.markdown("---")
 st.image("image/banner.jpg", use_container_width=True)
 
 # Load model
-model = load_model('model/fine_tuned_model.h5')
+model = load_model('model/fine_tuned_model.keras')
 
 # Mapping label
 class_names = ['Naturalisme', 'Realisme']
@@ -56,7 +51,7 @@ uploaded_file = st.file_uploader("Upload gambar lukisan", type=["jpg", "jpeg", "
 
 if uploaded_file is not None:
     # Gambar di tengah
-    col_left, col_center, col_right = st.columns([1, 1, 1])  # Tengah lebih lebar
+    col_left, col_center, col_right = st.columns([1, 1, 1])
     with col_center:
         img = Image.open(uploaded_file)
         st.image(img, caption="Gambar yang diupload", use_container_width=True)
