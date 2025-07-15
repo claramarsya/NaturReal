@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 
 # Konfigurasi halaman
-st.set_page_config(page_title="NaturReal", layout="centered")
+st.set_page_config(page_title="NaturReal", layout="wide")
 
 # CSS custom font judul
 st.markdown(
@@ -24,9 +24,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Header: logo kecil dan judul
-st.markdown("<h2 style='text-align: center; font-family: Playfair Display;'>NaturReal</h2>", unsafe_allow_html=True)
-st.image("image/logo.png", width=100)  # Ukuran logo kecil, otomatis ke tengah
+# Logo dan judul
+col1, col2 = st.columns([1, 15])
+with col1:
+    st.image("image/logo.png", use_container_width=True)
+with col2:
+    st.markdown("<div class='custom-title'>NaturReal</div>", unsafe_allow_html=True)
 
 # Garis pemisah
 st.markdown("---")
