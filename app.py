@@ -24,15 +24,12 @@ st.set_page_config(page_title="NaturReal", layout="wide")
 #     unsafe_allow_html=True
 # )
 
-# Title section (logo + nama sejajar & responsif)
-col1, col2, col3 = st.columns([1, 0.2, 5])  # pakai 3 kolom agar sejajar
+# Logo dan judul (responsif dan sejajar di HP)
+col1, col2 = st.columns([1, 5])
 with col1:
-    st.image("image/logo.png", width=50)  # atur ukuran logo agar tidak terlalu besar
-with col3:
-    st.markdown(
-        "<h2 style='font-family:Playfair Display, serif; margin-top: 20px;'>NaturReal</h2>",
-        unsafe_allow_html=True
-    )
+    st.image("image/logo.png", width=50)  # kecilkan logo
+with col2:
+    st.markdown("## NaturReal")
 
 # Garis pemisah
 st.markdown("---")
