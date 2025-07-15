@@ -25,11 +25,11 @@ st.markdown(
 )
 
 # Logo dan judul
-# col1, col2 = st.columns([1, 15])
-# with col1:
-#     st.image("image/logo.png", use_container_width=True)
-# with col2:
-st.markdown("<div class='custom-title'>NaturReal</div>", unsafe_allow_html=True)
+col1, col2 = st.columns([1, 15])
+with col1:
+    st.image("image/logo.png", use_container_width=True)
+with col2:
+    st.markdown("<div class='custom-title'>NaturReal</div>", unsafe_allow_html=True)
 
 # Garis pemisah
 st.markdown("---")
