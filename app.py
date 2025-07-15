@@ -9,27 +9,27 @@ from PIL import Image
 st.set_page_config(page_title="NaturReal", layout="wide")
 
 # CSS custom font judul
-# st.markdown(
-#     """
-#     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
-#     <style>
-#         .custom-title {
-#             font-family: 'Playfair Display', serif;
-#             font-size: 35px;
-#             font-weight: semibold;
-#             padding-top: 4px;
-#         }
-#     </style>
-#     """,
-#     unsafe_allow_html=True
-# )
+st.markdown(
+    """
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        .custom-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 35px;
+            font-weight: semibold;
+            padding-top: 4px;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-# Logo dan judul (responsif dan sejajar di HP)
-col1, col2 = st.columns([1, 5])
+# Logo dan judul
+col1, col2 = st.columns([1, 15])
 with col1:
-    st.image("image/logo.png", width=50)  # kecilkan logo
+    st.image("image/logo.png", use_container_width=True)
 with col2:
-    st.markdown("## NaturReal")
+    st.markdown("<div class='custom-title'>NaturReal</div>", unsafe_allow_html=True)
 
 # Garis pemisah
 st.markdown("---")
