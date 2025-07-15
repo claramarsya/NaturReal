@@ -25,9 +25,9 @@ st.markdown(
 )
 
 # Logo dan judul
-col1, col2 = st.columns([1, 15])
+col1, col2 = st.columns([1, 10])
 with col1:
-    st.image("image/logo.png", use_container_width=True)
+    st.image("image/logo.png", width=60)
 with col2:
     st.markdown("<div class='custom-title'>NaturReal</div>", unsafe_allow_html=True)
 
