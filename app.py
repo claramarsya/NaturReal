@@ -25,11 +25,11 @@ st.markdown(
 )
 
 # Logo dan judul
-col1, col2 = st.columns([1, 15])
-with col1:
-    st.image("image/logo.png", use_container_width=True)
-with col2:
-    st.markdown("<div class='custom-title'>NaturReal</div>", unsafe_allow_html=True)
+# col1, col2 = st.columns([1, 15])
+# with col1:
+#     st.image("image/logo.png", use_container_width=True)
+# with col2:
+st.markdown("<div class='custom-title'>NaturReal</div>", unsafe_allow_html=True)
 
 # Garis pemisah
 st.markdown("---")
@@ -60,7 +60,7 @@ if uploaded_file is not None:
         st.markdown("<br>", unsafe_allow_html=True)
 
         # Tombol di tengah
-        col_left, col_center, col_right = st.columns([1, 2, 1])
+        col_left, col_center, col_right = st.columns([1, 3, 1])
         with col_center:
             predict = st.button("Lihat Hasil Prediksi", use_container_width=True)
 
