@@ -9,27 +9,30 @@ from PIL import Image
 st.set_page_config(page_title="NaturReal", layout="wide")
 
 # CSS custom font judul
-st.markdown(
-    """
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
-    <style>
-        .custom-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 35px;
-            font-weight: semibold;
-            padding-top: 4px;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+# st.markdown(
+#     """
+#     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+#     <style>
+#         .custom-title {
+#             font-family: 'Playfair Display', serif;
+#             font-size: 35px;
+#             font-weight: semibold;
+#             padding-top: 4px;
+#         }
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
 
-# Logo dan judul
-col1, col2 = st.columns([1, 10])
+# Judul dan Logo responsif dengan columns
+col1, col2 = st.columns([1, 6])
 with col1:
-    st.image("image/logo.png", width=60)
+    st.image("image/logo.png", width=60)  # kecilkan ukuran logo
 with col2:
-    st.markdown("<div class='custom-title'>NaturReal</div>", unsafe_allow_html=True)
+    st.markdown(
+        "<h2 style='font-family:Playfair Display, serif; padding-top: 10px;'>NaturReal</h2>",
+        unsafe_allow_html=True
+    )
 
 # Garis pemisah
 st.markdown("---")
